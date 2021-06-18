@@ -1,3 +1,3 @@
 # holbertonschool-low_level_programming
-Los proyectos contenidos en este repositorio se realizaron con el propósito de aprender C desde su compilación hasta su estructura para codificar.
+The projects contained in this repository were made with the purpose of learning C from its compilation to its structure for coding.
 Made by Estéfano Misme by Holberton School.
