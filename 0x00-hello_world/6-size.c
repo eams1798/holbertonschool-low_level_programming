@@ -8,7 +8,7 @@ int main(void)
 	int szchr = sizeof(char);
 	int szint = sizeof(int);
 	int szlnt = sizeof(long int);
-	int szlln = sizeof(long int);
+	int szlln = sizeof(long long);
 	int szflt = sizeof(float);
 
 	printf("Size of a char: %d byte(s)\n", szchr);
