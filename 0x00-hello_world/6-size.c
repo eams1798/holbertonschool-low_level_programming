@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*This C file prints the size of some data types in bytes*/
+/**
+ * main - This C file prints the size of some data types in bytes
+ *
+ * Return: zero
+ */
 
 int main(void)
 {
