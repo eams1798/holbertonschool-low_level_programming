@@ -23,7 +23,7 @@ void times_table(void)
 				_putchar('0' + mult10);
 			else
 			{
-				if (m1 != 0)
+				if (m2 != 0)
 					_putchar(' ');
 			}
 			_putchar('0' + mult01);
