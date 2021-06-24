@@ -18,7 +18,6 @@ void times_table(void)
 			arrMult[m1][m2] = m1 * m2;
 			mult10 = arrMult[m1][m2] / 10;
 			mult01 = arrMult[m1][m2] % 10;
-			_putchar(' ');
 			if (mult10 >= 1)
 				_putchar('0' + mult10);
 			else
