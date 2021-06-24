@@ -28,8 +28,9 @@ void times_table(void)
 			}
 			_putchar('0' + mult01);
 			if (m2 != 9)
-				_putchar(',');
+			{	_putchar(',');
 				_putchar(' ');
+			}
 		}
 		_putchar('\n');
 	}
