@@ -19,14 +19,14 @@ void times_table(void)
 			mult10 = arrMult[m1][m2] / 10;
 			mult01 = arrMult[m1][m2] % 10;
 			if (mult10 >= 1)
-				putchar('0' + mult10);
+				_putchar('0' + mult10);
 			else
-				putchar(' ');
-			putchar('0' + mult01);
+				_putchar(' ');
+			_putchar('0' + mult01);
 			if (m2 != 9)
-				putchar(',');
-			putchar(' ');
+				_putchar(',');
+			_putchar(' ');
 		}
-		putchar('\n');
+		_putchar('\n');
 	}
 }
