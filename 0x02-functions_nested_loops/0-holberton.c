@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char h[] = "HolbertonSchool";
+	char h[] = "Holberton";
 	int n = sizeof(h);
 	int i;
 
