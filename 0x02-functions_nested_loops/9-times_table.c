@@ -22,11 +22,14 @@ void times_table(void)
 			if (mult10 >= 1)
 				_putchar('0' + mult10);
 			else
-				_putchar(' ');
+			{
+				if (m1 != 0)
+					_putchar(' ');
+			}
 			_putchar('0' + mult01);
 			if (m2 != 9)
 				_putchar(',');
-			_putchar(' ');
+				_putchar(' ');
 		}
 		_putchar('\n');
 	}
