@@ -1,11 +1,11 @@
 #include "holberton.h"
 
 /**
- * print_numbers - prints the numbers from 0 to 9, but no 2 or 4
+ * print_most_numbers - prints the numbers from 0 to 9, but no 2 or 4
  *
  * Return: nothing
  */
-void print_numbers(void)
+void print_most_numbers(void)
 {
 	int i;
 
