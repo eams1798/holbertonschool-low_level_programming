@@ -24,11 +24,19 @@ int largest_number(int a, int b, int c)
 	{
 		largest = c;
 	}
-	else
+	else if (a = b && a > c)
 	{
-		printf("Two or more numbers are equal and the largest ones");
-		exit(-1);
+		largest = a;
 	}
-
+	else if (b = c && b > a)
+       	{
+		largest = b;
+	}
+	else if (c = a && c > b)
+	{
+		largest = c;
+	}
+	else
+		largest = a;
 	return (largest);
 }
