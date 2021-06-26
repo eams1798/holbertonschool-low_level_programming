@@ -13,18 +13,18 @@ void print_number(int n)
 	int pot_10 = 1;
 	int digit;
 
-	while (n/10 <= -1)
+	if (n < 0)
 	{
-		n = n / 10;
-		c++;
+		_putchar('-');
+		n *= -1;
+		n_save = n;
 	}
-	while (n/10 >= 1)
+	while (n / 10 >= 1)
 	{
 		n = n / 10;
 		c++;
 	}
 	n = n_save;
-
 	c--;
 	if (n < 0)
 	{
