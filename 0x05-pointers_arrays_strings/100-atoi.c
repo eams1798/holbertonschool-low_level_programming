@@ -110,7 +110,8 @@ int strSign(char *s)
 int _atoi(char *s)
 {
 	int i;
-	int num = 0, mult10 = 1;
+	unsigned int num = 0;
+	unsigned int mult10 = 1;
 
 	if (max_index(s) ==  -1)
 		return (0);
@@ -119,6 +120,5 @@ int _atoi(char *s)
 		num += ((*(s + i) - '0') * mult10);
 		mult10 *= 10;
 	}
-	num *= strSign(s);
-	return (num);
+	return (num * strSign(s));
 }
