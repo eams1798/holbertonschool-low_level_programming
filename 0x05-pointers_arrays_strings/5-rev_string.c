@@ -34,7 +34,7 @@ void rev_string(char *s)
 
 		x++;
 	}
-	for (i = 0; i < (_stringL(s) - 1) / 2; i++)
+	for (i = 0; i < (_stringL(s)) / 2; i++)
 	{
 		rev = s[i];
 		s[i] = *x;
