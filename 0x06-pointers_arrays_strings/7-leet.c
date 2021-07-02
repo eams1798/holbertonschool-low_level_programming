@@ -25,29 +25,19 @@ int _stringL(char *s)
  */
 char *leet(char *s)
 {
-	int i;
+	int i, j;
+	char *arrleet = "aeotl";
+	char *arrLEET = "AEOTL";
+	int  arr1337[] = {4, 3, 0, 7, 1};
 
 	for (i = 0; i < _stringL(s); i++)
 	{
-		if (s[i] == 'a' || s[i] == 'A')
+		for (j = 0; j < 4; j++)
 		{
-			s[i] = '4';
-		}
-		if (s[i] == 'e' || s[i] == 'E')
-		{
-			s[i] = '3';
-		}
-		if (s[i] == 'o' || s[i] == 'O')
-		{
-			s[i] = '0';
-		}
-		if (s[i] == 't' || s[i] == 'T')
-		{
-			s[i] = '7';
-		}
-		if (s[i] == 'l' || s[i] == 'L')
-		{
-			s[i] = '1';
+			if (s[i] == arrleet[j] || s[i] == arrLEET[j])
+			{
+				s[i] = arr1337[j] + 48;
+			}
 		}
 	}
 	return (s);
