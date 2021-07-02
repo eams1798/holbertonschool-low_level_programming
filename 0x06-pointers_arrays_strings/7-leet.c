@@ -1,23 +1,6 @@
 #include "holberton.h"
 
 /**
- * _stringL - returns the length of a string.
- * @s: a string of characters
- *
- * Return: the length of the string s
- */
-int _stringL(char *s)
-{
-	int i = 0;
-
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-/**
  * leet - encodes a string using leet/1337
  * @s: a string
  *
