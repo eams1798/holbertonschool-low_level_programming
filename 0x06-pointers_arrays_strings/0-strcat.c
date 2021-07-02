@@ -18,7 +18,7 @@ int _stringL(char *s)
 }
 
 /**
- * strcat - concatenates two strings
+ * _strcat - concatenates two strings
  * @dest: a string
  * @src: a string
  *
@@ -28,7 +28,7 @@ char *_strcat(char *dest, char *src)
 {
 	int i;
 	int lenDest = _stringL(dest);
-	int lenSrc =_stringL(src);
+	int lenSrc = _stringL(src);
 
 	for (i = 0; i <= lenSrc; i++)
 	{

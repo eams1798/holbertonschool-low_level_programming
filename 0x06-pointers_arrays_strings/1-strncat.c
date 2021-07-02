@@ -29,15 +29,15 @@ char *_strncat(char *dest, char *src, int n)
 {
 	int i;
 	int lenDest = _stringL(dest);
-	int lenSrc =_stringL(src);
+	int lenSrc = _stringL(src);
 	int nbytes;
 
-	if (lenSrc >= n-1)
+	if (lenSrc >= n - 1)
 	{
-		  nbytes = n-1;
+		nbytes = n - 1;
 	}
 	else
-		  nbytes = lenSrc;
+		nbytes = lenSrc;
 	for (i = 0; i <= nbytes; i++)
 	{
 		dest[lenDest + i] = src[i];
