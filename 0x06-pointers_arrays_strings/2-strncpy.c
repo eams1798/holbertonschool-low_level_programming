@@ -28,7 +28,6 @@ int _stringL(char *s)
 char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
-	int lenDest = _stringL(dest);
 	int lenSrc = _stringL(src);
 	int nbytes;
 

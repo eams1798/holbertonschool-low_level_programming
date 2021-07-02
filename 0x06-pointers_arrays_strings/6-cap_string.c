@@ -26,12 +26,9 @@ int _stringL(char *s)
 char *cap_string(char *s)
 {
 	int i;
-	char verif, verif_next;
 
 	for (i = 0; i < _stringL(s); i++)
 	{
-		verif = s[i];
-		verif_next = s[i + 1];
 		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\n' || s[i] == ','
 				|| s[i] == ';' || s[i] == '.' || s[i] == '!'
 				|| s[i] == '?' || s[i] == '"' || s[i] == '('
