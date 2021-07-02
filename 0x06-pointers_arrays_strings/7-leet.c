@@ -30,7 +30,7 @@ char *leet(char *s)
 	char *arrLEET = "AEOTL";
 	int  arr1337[] = {4, 3, 0, 7, 1};
 
-	for (i = 0; i < _stringL(s); i++)
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
 		for (j = 0; j < 4; j++)
 		{
