@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stddef.h>
 
 /**
  * _strchr - locates a character in a string
@@ -17,5 +18,8 @@ char *_strchr(char *s, char c)
 		}
 		s++;
 	}
-	return (s);
+	if (*s == '\0')
+		return (0);
+	else
+		return (s);
 }
