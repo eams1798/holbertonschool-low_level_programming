@@ -10,7 +10,6 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, j;
 	long int sdiag1 = 0;
 	long int sdiag2 = 0;
 	int posd1 = 0, posd2 = size - 1;
