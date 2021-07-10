@@ -11,13 +11,15 @@
 int main(int argc, char **argv)
 {
 	int numcoins = 0;
-	int cent = atoi(argv[1]);
+	int cent;
 
 	if (argc != 2)
 	{
+		(void)cent;
 		printf("Error\n");
 		exit(1);
 	}
+	cent = atoi(argv[1]);
 	if (cent / 25 > 0)
 	{
 		numcoins += cent / 25;
