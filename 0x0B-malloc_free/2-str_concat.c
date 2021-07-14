@@ -11,26 +11,40 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	size_t lens1 = 0, lens2 = 0, i;
+	size_t lens1 = 0, lens2 = 0, i, j;
 	char *str;
 
-	if (s2 == NULL)
-		return (s1);
-	while (s1[lens1] != '\0')
-		lens1++;
-	while (s2[lens2] != '\0')
-		lens2++;
-	lens2++;
-	str = (char *)malloc((lens1 + lens2) * sizeof(char));
-	if (s1 == NULL)
+	if (s1 != NULL)
+	{
+		while (s1[lens1] != '\0')
+			lens1++;
+	}
+	if (s2 != NULL)
+	{
+		while (s2[lens2] != '\0')
+			lens2++;
+	}
+	if (s1 == NULL && s2 == NULL)
+		str = (char *)malloc(1);
+	else
+		str = (char *)malloc((lens1 + lens2 + 1) * sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	for (i = 0; i < lens1; i++)
+	if (s1 != NULL)
 	{
-		str[i] = s1[i];
+		for (i = 0; i <= lens1; i++)
+		{
+			str[i] = s1[i];
+		}
 	}
-	for (i = 0; i < lens2; i++)
+	if (s2 != NULL)
 	{
-		str[i + lens1] = s2[i];
+		for (j = 0; j <= lens2; j++)
+		{
+			str[j + lens1] = s2[j];
+		}
 	}
+	if (s1 == NULL && s2 == NULL)
+		str[0] = '\0';
 	return (str);
 }
