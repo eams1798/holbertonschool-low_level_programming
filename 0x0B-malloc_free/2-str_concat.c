@@ -11,7 +11,7 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	size_t lens1 = 0, lens2 = 0, lenstr, i;
+	size_t lens1 = 0, lens2 = 0, i;
 	char *str;
 
 	if (s2 == NULL)
@@ -24,7 +24,6 @@ char *str_concat(char *s1, char *s2)
 	str = (char *)malloc((lens1 + lens2) * sizeof(char));
 	if (s1 == NULL)
 		return (NULL);
-	lenstr = lens1 + lens2;
 	for (i = 0; i < lens1; i++)
 	{
 		str[i] = s1[i];
