@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "stdlib.h"
 
 /**
@@ -24,7 +25,7 @@ char *argstostr(int ac, char **av)
 		}
 		c++;
 	}
-	str = (char *)malloc(c * sizeof(char));
+	str = (char *)malloc((c + 1) * sizeof(char));
 	if (str == NULL)
 	{
 		free(str);
@@ -43,5 +44,6 @@ char *argstostr(int ac, char **av)
 		str[c] = '\n';
 		c++;
 	}
+	str[c] = '\0';
 	return (str);
 }
