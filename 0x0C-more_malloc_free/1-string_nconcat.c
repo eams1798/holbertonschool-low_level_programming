@@ -7,7 +7,7 @@
  *
  * Return: the length of the string s
  */
-int strL(char *s)
+unsigned int strL(char *s)
 {
 	int i = 0;
 
@@ -40,7 +40,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	else
 		len = n;
 	len += strL(s1) + 1;
-	cat = malloc(lensizeof(char));
+	cat = malloc(len * sizeof(char));
 	if (cat == NULL)
 	{
 		free(cat);
