@@ -1,24 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-/**
- * strL - returns the length of a string.
- * @s: a string of characters
- *
- * Return: the length of the string s
- */
-unsigned int strL(char *s)
-{
-	int i = 0;
-
-	if (s == NULL)
-		return (0);
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include <string.h>
 
 /**
  * string_nconcat - concatenates two strings
@@ -32,27 +13,40 @@ unsigned int strL(char *s)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *cat;
+	char *cat, *c1, *c2;
 	unsigned int len, i;
 
-	if (n > strL(s2))
-		len = strL(s2);
+	if (s1 == NULL)
+		c1 = "";
+	else
+		c1 = s1;
+	if (s2 == NULL || n == 0)
+		c2 = "";
+	else
+		c2 = s2;
+
+	if (n > strlen(c2))
+		len = strlen(c2);
 	else
 		len = n;
-	len += strL(s1) + 1;
-	cat = malloc(len * sizeof(char));
+	len += strlen(c1);
+	cat = malloc((len + 1) * sizeof(char));
 	if (cat == NULL)
 	{
 		free(cat);
 		return (NULL);
 	}
-	for (i = 0; i < len - 1; i++)
+	for (i = 0; i <= len; i++)
 	{
-		if (i >= strL(s1))
-			cat[i] = s2[i - strL(s1)];
+		if (i == len)
+		{
+			cat[i] = '\0';
+			break;
+		}
+		if (i >= strlen(c1))
+			cat[i] = c2[i - strlen(c1)];
 		else
-			cat[i] = s1[i];
+			cat[i] = c1[i];
 	}
-	cat[i] = '\0';
 	return (cat);
 }
