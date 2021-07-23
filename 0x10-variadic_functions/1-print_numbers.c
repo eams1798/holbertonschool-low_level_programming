@@ -10,7 +10,7 @@
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	int i;
+	unsigned int i;
 	va_list argint;
 
 	if (n == 0)
@@ -23,5 +23,5 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 			printf("%s", separator);
 	}
 	va_end(argint);
-	_putchar('\n');
+	printf("\n");
 }
