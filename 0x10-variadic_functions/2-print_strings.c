@@ -15,7 +15,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	char *str;
 
 	if (n == 0)
+	{
+		putchar('\0');
 		return;
+	}
 	va_start(argstr, n);
 	while (i < n)
 	{

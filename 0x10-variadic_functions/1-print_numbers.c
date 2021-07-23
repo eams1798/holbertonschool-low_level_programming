@@ -14,7 +14,10 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list argint;
 
 	if (n == 0)
+	{
+		putchar('\0');
 		return;
+	}
 	va_start(argint, n);
 	for (i = 0; i < n; i++)
 	{
