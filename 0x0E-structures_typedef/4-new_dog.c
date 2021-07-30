@@ -3,7 +3,7 @@
 
 /**
  * copy - stores the copy of a string
- * @str: a string of characters	
+ * @str: a string of characters
  *
  * Return: a copy of the given string
  */
@@ -16,7 +16,10 @@ char *copy(char *str)
 		len++;
 	cpy = malloc((len + 1) * sizeof(char));
 	if (cpy == NULL)
-		return NULL;
+	{
+		free(cpy);
+		return (NULL);
+	}
 	for (i = 0; i < len; i++)
 	{
 		cpy[i] = str[i];
