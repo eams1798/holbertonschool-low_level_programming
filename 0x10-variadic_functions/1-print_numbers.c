@@ -28,7 +28,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	if (n == 0)
 	{
-		putchar('\0');
+		_putchar('\0');
 		return;
 	}
 	va_start(argint, n);
