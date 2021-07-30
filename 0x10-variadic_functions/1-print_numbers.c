@@ -9,7 +9,7 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c)
+int _putcharrr(char c)
 {
 	return (write(1, &c, 1));
 }
@@ -28,7 +28,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	if (n == 0)
 	{
-		_putchar('\0');
+		_putcharrr('\0');
 		return;
 	}
 	va_start(argint, n);
