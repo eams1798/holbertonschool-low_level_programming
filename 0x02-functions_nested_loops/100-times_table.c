@@ -1,4 +1,33 @@
-#include "holberton.h"
+#include "main.h"
+
+/**
+ * print_number - prints an integer using putchar
+ *
+ * @n: a number
+ * Return: nothing
+ */
+void print_number(int n)
+{
+	int sizebuffer = 2, i;
+	int pot_10 = 1;
+	int digit;
+
+	for (; sizebuffer >= 0; sizebuffer--)
+	{
+		for (i = 0; i < sizebuffer; i++)
+		{
+			pot_10 = pot_10 * 10;
+		}
+		digit = (n / pot_10) % 10;
+		if (digit == 0 && ((n < 10 && sizebuffer > 0) ||
+					(n >= 10 && n < 100 &&
+					 sizebuffer > 1)))
+			_putchar(' ');
+		else
+			_putchar('0' + digit);
+		pot_10 = 1;
+	}
+}
 
 /**
  * print_times_table - print the time table of the number in the input
@@ -8,35 +37,23 @@
  */
 void print_times_table(int n)
 {
-	int m1, m2;
-	int cnt = n + 1;
-	int arrMult[cnt][cnt];
-	int m100, m010, m001;
+	int i, j, mult;
 
-	if (n <= 15 && n >= 0)
+	if (n >= 0 && n <= 15)
 	{
-		for (m1 = 0; m1 <= n; m1++)
+		for (i = 0; i <= n; i++)
 		{
-			for (m2 = 0; m2 <= n; m2++)
+			for (j = 0; j <= n; j++)
 			{
-				arrMult[m1][m2] = m1 * m2;
-				m100 = arrMult[m1][m2] / 100;
-				m010 = (arrMult[m1][m2] % 100) / 10;
-				m001 = arrMult[m1][m2] % 10;
-				if (m100 >= 1)
-					putchar('0' + m100);
-				else
-					putchar(' ');
-				if (m010 >= 1 || arrMult[m1][m2] >= 100)
-					putchar('0' + m010);
-				else
-					putchar(' ');
-				putchar('0' + m001);
-				if (m2 != n)
-					putchar(',');
-				putchar(' ');
+				mult = i * j;
+				print_number(mult);
+				if (j < n)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
 			}
-			putchar('\n');
+			_putchar('\n');
 		}
 	}
 }
