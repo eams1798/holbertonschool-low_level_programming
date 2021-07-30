@@ -1,20 +1,27 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer using putchar
+ * print_mult - prints the multiplication of two numbers using putchar
+ * @i: first number
+ * @j: second number
  *
- * @n: a number
  * Return: nothing
  */
-void print_number(int n)
+void print_mult(int i, int j)
 {
-	int sizebuffer = 2, i;
+	int n = i * j;
+	int sizebuffer = 2, k;
 	int pot_10 = 1;
-	int digit;
+	int digit = 0;
 
+	if (j == 0)
+	{
+		_putchar('0' + digit);
+		return;
+	}
 	for (; sizebuffer >= 0; sizebuffer--)
 	{
-		for (i = 0; i < sizebuffer; i++)
+		for (k = 0; k < sizebuffer; k++)
 		{
 			pot_10 = pot_10 * 10;
 		}
@@ -37,7 +44,7 @@ void print_number(int n)
  */
 void print_times_table(int n)
 {
-	int i, j, mult;
+	int i, j;
 
 	if (n >= 0 && n <= 15)
 	{
@@ -45,8 +52,7 @@ void print_times_table(int n)
 		{
 			for (j = 0; j <= n; j++)
 			{
-				mult = i * j;
-				print_number(mult);
+				print_mult(i, j);
 				if (j < n)
 				{
 					_putchar(',');
