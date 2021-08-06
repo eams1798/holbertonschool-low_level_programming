@@ -1,35 +1,59 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
- * binary_to_uint - converts a binary number to an unsigned integer
- * @b: a number to be converted
+ * check_string - Check string
+ * @b: Binary
  *
- * Return: the converted number, or 0 if there are incorrect arguments
+ * Return: Length of string
  */
-unsigned int binary_to_uint(const char *b)
+int check_string(const char *b)
 {
-	int i = 0, expb = 0, b2, j, i2, pow10 = 1, pow2;
-	unsigned int bin, mult, dec = 0;
+	int i = 0;
 
-	while (b[i] != '\0')
+	if (b == NULL)
+		return (0);
+	while (b[i])
 	{
-		if (b == NULL || (b[i] < 48 || b[i] > 57))
+		if (b[i] != '1' && b[i] != '0')
 			return (0);
 		i++;
 	}
-	bin = atoi(b);
-	i--;
-	i2 = i;
-	for (; i >= 0; i--)
+	return (i);
+}
+
+/**
+ * my_pow - Simulate function pow
+ * @number: number
+ * @base: exponent
+ *
+ * Return: Power of a number
+ */
+int my_pow(int number, int base)
+{
+	if (base <= 0)
+		return (1);
+	return (number * my_pow(number, (base - 1)));
+}
+
+/**
+ * binary_to_uint - Convert binary to unsigned int
+ * @b: Binary
+ *
+ * Return: Unsigned int
+ */
+unsigned int binary_to_uint(const char *b)
+{
+	unsigned int number, result = 0;
+	int len, i;
+
+	if (!check_string(b))
+		return (0);
+	len = check_string(b);
+	for (i = 0; i < len; i++)
 	{
-		for (j = 0; j < i2 - i; j++)
-			pow10 *= 10;
-		pow2 = 1 << expb;
-		b2 = (bin / pow10) % 10;
-		mult = b2 * pow2;
-		dec += mult;
-		expb++;
-		pow10 = 1;
+		number = b[i] - '0';
+		result += number * my_pow(2, len - i - 1);
 	}
-	return (dec);
+	return (result);
 }
