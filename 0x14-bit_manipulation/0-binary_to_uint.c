@@ -1,4 +1,5 @@
-#include "lists.h"
+#include "main.h"
+#include <math.h>
 
 /**
  * binary_to_uint - converts a binary number to an unsigned integer
@@ -19,7 +20,7 @@ unsigned int binary_to_uint(const char *b)
 	}
 	bin = atoi(b);
 	i--;
-	for (i; i >= 0; i--)
+	for (; i >= 0; i--)
 	{
 		pow10 = pow(10, expb);
 		pow2 = pow(2, expb);

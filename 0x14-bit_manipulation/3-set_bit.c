@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "main.h"
 
 /**
  * set_bit - sets the value of a bit to 1 at a given index
@@ -9,14 +9,14 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	int num;
+	int num, change;
 
 	if (n == NULL)
 	{
 		return (-1);
 	}
 	num = *n;
-	int change = ((num >> index) | 1) << index;
+	change = ((num >> index) | 1) << index;
 	*n = change;
 
 	return (1);
