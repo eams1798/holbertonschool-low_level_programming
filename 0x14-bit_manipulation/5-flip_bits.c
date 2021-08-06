@@ -53,12 +53,12 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	while (auxN > 1)
 	{
-		auxN /= 2;
+		auxN = auxN >> 1;
 		cn++;
 	}
 	while (auxM > 1)
 	{
-		auxM /= 2;
+		auxM = auxM >> 1;
 		cm++;
 	}
 	if (cn >= cm)
