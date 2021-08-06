@@ -49,7 +49,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	char *strN, *strM;
 	int buffer, cn = 1, cm = 1, flipcount = 0;
-	int auxN = n, auxM = m;
+	unsigned long int auxN = n, auxM = m;
 
 	while (auxN > 1)
 	{
