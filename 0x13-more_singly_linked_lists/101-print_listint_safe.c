@@ -31,12 +31,16 @@ int elements(const listint_t *h)
 			}
 		}
 		free(arrUL);
-		if (dif == 1 || ptr == NULL)
+		if (dif == 1)
+		{
+			i--;
+			break;
+		}
+		if (ptr == NULL)
 			break;
 		i++;
 		ptr = h;
 	}
-	i--;
 	ptr = NULL;
 	arrUL = NULL;
 	return (i);
@@ -55,13 +59,14 @@ size_t print_listint_safe(const listint_t *h)
 	unsigned long int i;
 
 	if (h == NULL)
-		exit(98);
-	size = elements(h);
-	for (i = 0; i <= size; i++, ptr = ptr->next)
 	{
-		if (i == size && ptr->next != NULL)
-			printf("-> ");
-		printf("[%p] %d\n", (void *)ptr, ptr->n);
+		printf("0\n");
+		exit(98);
 	}
+	size = elements(h);
+	for (i = 0; i < size; i++, ptr = ptr->next)
+		printf("[%p] %d\n", (void *)ptr, ptr->n);
+	if (ptr != NULL)
+		printf("-> [%p] %d\n", (void *)ptr, ptr->n);
 	return (size);
 }
