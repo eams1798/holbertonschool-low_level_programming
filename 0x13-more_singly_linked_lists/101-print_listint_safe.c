@@ -36,6 +36,7 @@ int elements(const listint_t *h)
 		i++;
 		ptr = h;
 	}
+	i--;
 	ptr = NULL;
 	arrUL = NULL;
 	return (i);
@@ -56,9 +57,9 @@ size_t print_listint_safe(const listint_t *h)
 	if (h == NULL)
 		exit(98);
 	size = elements(h);
-	for (i = 0; i < size; i++, ptr = ptr->next)
+	for (i = 0; i <= size; i++, ptr = ptr->next)
 	{
-		if (i == size - 1 && ptr->next != NULL)
+		if (i == size && ptr->next != NULL)
 			printf("-> ");
 		printf("[%p] %d\n", (void *)ptr, ptr->n);
 	}
