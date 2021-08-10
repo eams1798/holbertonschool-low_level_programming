@@ -3,7 +3,8 @@
 /**
  * append_text_to_file - appends text at the end of a file
  * @filename: a string which contains the name of the file we will work
- * @text_content: a string which contains the text we will write inside the file
+ * @text_content: a string which contains the text we will write inside the
+ * file
  *
  * Return: 1 if the file exists, and -1 if the file does not exist
  */
