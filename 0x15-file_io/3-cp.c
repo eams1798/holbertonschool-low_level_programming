@@ -24,8 +24,8 @@ int _strlen(char *str)
  */
 int main(int argc, char **argv)
 {
-	int fd1, fd2, r1, w2, c1, c2;
-	char *buffer;
+	int fd1, fd2, r1, w2, c1, c2, cerror;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
@@ -33,13 +33,11 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 	fd1 = open(argv[1], O_RDONLY);
-	fd2 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY);
-	buffer = malloc(1024 * sizeof(char));
+	fd2 = open(argv[2], O_CREAT | O_APPEND | O_TRUNC | O_WRONLY);
 	r1 = read(fd1, buffer, 1024);
 	if (fd1 == -1 || r1 == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
 		exit(98);
 	}
 	w2 = write(fd2, buffer, _strlen(buffer));
@@ -50,15 +48,11 @@ int main(int argc, char **argv)
 	}
 	chmod(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	c1 = close(fd1);
-	if (c1 == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fd1);
-		exit(100);
-	}
 	c2 = close(fd2);
-	if (c2 == -1)
+	if (c1 == -1 || c2 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd2);
+		cerror = (c1 == -1 ? fd1 : fd2);
+		dprintf(2, "Error: Can't close fd %d\n", cerror);
 		exit(100);
 	}
 	return (0);

@@ -9,14 +9,14 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	int num, change;
+	unsigned long int num, change;
 
-	if (n == NULL)
+	if (n == NULL | index > sizeof(*n) * 8)
 	{
 		return (-1);
 	}
 	num = *n;
-	change = ((num >> index) | 1) << index;
+	change = num | (1 << index);
 	*n = change;
 
 	return (1);
