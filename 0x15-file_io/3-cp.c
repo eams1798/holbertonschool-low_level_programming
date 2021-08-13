@@ -1,18 +1,39 @@
 #include "main.h"
 
 /**
- * _strlen - returns the length of a string
- * @str: a string
+ * read_and_write - reads a file and writes its content inside other file
+ * @fd1: file descriptor of the reading file
+ * @fd2: file descriptor of the writing file
+ * @buf: a buffer to transfer the content of the reading file
+ * @f1: The name of the reading file
+ * @f2: The name of the writing file
  *
- * Return: the length of the given string
+ * Return: nothing
  */
-int _strlen(char *str)
+void read_and_write(int fd1, int fd2, char *buf, char *f1, char *f2)
 {
-	int i = 0;
+	int r1, w2;
 
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	while (1)
+	{
+		r1 = read(fd1, buf, 1024);
+		if (r1 == -1)
+		{
+			dprintf(2, "Error: Can't read from file %s\n",
+					f1);
+			exit(98);
+		}
+		w2 = write(fd2, buf, r1);
+		if (w2 == -1)
+		{
+			dprintf(2, "Error: Can't write to %s\n", f2);
+			exit(99);
+		}
+		if (w2 < 1024)
+		{
+			break;
+		}
+	}
 }
 
 /**
@@ -24,35 +45,33 @@ int _strlen(char *str)
  */
 int main(int argc, char **argv)
 {
-	int fd1, fd2, r1, w2, c1, c2, cerror;
+	int fd1, fd2, c1, c2;
 	char buffer[1024];
 
 	if (argc != 3)
 	{
-		write(STDERR_FILENO, "Usage: cp file_from file_to", 27);
+		write(2, "Usage: cp file_from file_to", 27);
 		exit(97);
 	}
 	fd1 = open(argv[1], O_RDONLY);
-	fd2 = open(argv[2], O_CREAT | O_APPEND | O_TRUNC | O_WRONLY);
-	r1 = read(fd1, buffer, 1024);
-	if (fd1 == -1 || r1 == -1)
+	if (fd1 == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	w2 = write(fd2, buffer, _strlen(buffer));
-	if (w2 == -1)
-	{
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
-	chmod(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	fd2 = open(argv[2], O_CREAT | O_APPEND | O_TRUNC | O_WRONLY,
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	read_and_write(fd1, fd2, buffer, argv[1], argv[2]);
 	c1 = close(fd1);
 	c2 = close(fd2);
-	if (c1 == -1 || c2 == -1)
+	if (c1 == -1)
 	{
-		cerror = (c1 == -1 ? fd1 : fd2);
-		dprintf(2, "Error: Can't close fd %d\n", cerror);
+		dprintf(2, "Error: Can't close fd %d\n", fd1);
+		exit(100);
+	}
+	if (c2 == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
 	return (0);
