@@ -1,10 +1,7 @@
 #include "lists.h"
 
-
-
 /**
- * delete_dnodeint_at_index - deletes the node at a given index of a
- * f a doubly linked list
+ * lendll - counts the elements of a doubly linked list
  * @h: the head of a list
  *
  * Return: the number of elements of the list
@@ -40,7 +37,11 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		*head = NULL;
 		return (1);
 	}
-	for (; index > 0; ptr = ptr->next, index--);
+	while (index > 0)
+	{
+		ptr = ptr->next;
+		index--;
+	}
 	if (ptr->prev == NULL)
 	{
 		*head = ptr->next;
