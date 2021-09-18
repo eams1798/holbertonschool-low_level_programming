@@ -27,29 +27,44 @@ size_t lendll(const dlistint_t *h)
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *ptr, *new;
+	dlistint_t *ptr = *h, *new, *aux;
 
-	if (idx > lendll(*h))
+	if (idx > lendll(ptr))
 		return (NULL);
 	new = malloc(sizeof(dlistint_t));
 	if (new == NULL)
 		return (NULL);
-	ptr = *h;
 	new->n = n;
 	if (ptr == NULL)
 	{
+		ptr = new;
 		new->prev = NULL;
 		new->next = NULL;
 		return (new);
 	}
-	while (idx > 0)
+	for (; idx > 0; idx--)
 	{
+		aux = ptr;
 		ptr = ptr->next;
-		idx--;
 	}
-	new->prev = ptr->prev;
-	new->next = ptr;
-	ptr->prev->next = new;
+	if (ptr == NULL)
+	{
+		new->prev = aux;
+		new->next = NULL;
+		aux->next = new;
+		return (new);
+	}
+	if (ptr->prev == NULL)
+	{
+		ptr->prev = new;
+		new->next = ptr;
+		new->prev = NULL;
+		*h = new;
+		return (new);
+	}
+	aux->next = new;
+	new->prev = aux;
 	ptr->prev = new;
+	new->next = ptr;
 	return (new);
 }
