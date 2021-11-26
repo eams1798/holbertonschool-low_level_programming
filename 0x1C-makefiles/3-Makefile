@@ -1,0 +1,29 @@
+#compiler
+CC=gcc
+
+#source files
+SRC=main.c school.c
+
+#object files
+OBJ=$(SRC:.c=.o)
+
+#filename
+NAME=school
+
+#eraser
+RM=rm -f
+
+all: $(NAME)
+	$(CC) $(SRC) -o $(NAME)
+
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean:
+	$(RM) *~ $(NAME) $(OBJ)
+
+re:
+	oclean all
