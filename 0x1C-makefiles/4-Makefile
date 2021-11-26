@@ -13,11 +13,13 @@ NAME=school
 #eraser
 RM=rm -f
 
-#CFLAGS
--Wall -Werror -Wextra -pedantic
+#compiler flags
+CFLAGS=-Wall -Werror -Wextra -pedantic
 
 all: $(NAME)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) *~ $(NAME)

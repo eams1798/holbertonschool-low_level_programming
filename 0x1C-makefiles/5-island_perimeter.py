@@ -13,11 +13,14 @@ def count_sides(grid, i, j):
     di = {'0': (i - 1, j), '1': (i + 1, j), '2': (i, j - 1), '3': (i, j + 1)}
     for i in range(4):
         x, y = di[str(i)]
-        try:
-            if grid[x][y] == 0:
-                sides += 1
-        except IndexError:
+        if x < 0 or x >= len(grid):
             sides += 1
+        elif y < 0 or y >= len(grid[x]):
+            sides += 1
+        elif grid[x][y] == 0:
+            sides += 1
+        else:
+            sides += 0
     return sides
 
 
