@@ -5,22 +5,22 @@
  * @array: an array of numbers
  * @left: first element of a portion of an array to search one value
  * @right: last element of a portion of an array to search one value
- * 
+ *
  * Return: Nothing
  */
 void print_array(int *array, size_t left, size_t right)
 {
-	size_t i;
+        size_t i;
 
-	printf("Searching in array: ");
-	for (i = left; i <= right; i++)
-	{
-		printf("%d", array[i]);
-		if (i != right)
-			printf(", ");
-		else
-			printf("\n");
-	}
+        printf("Searching in array: ");
+        for (i = left; i <= right; i++)
+        {
+                printf("%d", array[i]);
+                if (i != right)
+                        printf(", ");
+                else
+                        printf("\n");
+        }
 }
 
 /**
@@ -35,20 +35,20 @@ void print_array(int *array, size_t left, size_t right)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0, right = size - 1, mid;
+        size_t left = 0, right = size - 1, mid;
 
-	if (array == NULL)
-		return (NULL);
-	while (left <= right)
-	{
-		mid = left + (right - left) / 2;
-		print_array(array, left, right);
-		if (array[mid] == value)
-			return (mid);
-		if (array[mid] < value)
-			left = mid + 1;
-		else
-			right = mid - 1;
-	}
-	return (-1);
+        if (array == NULL)
+                return (NULL);
+        while (left <= right)
+        {
+                mid = left + (right - left) / 2;
+                print_array(array, left, right);
+                if (array[mid] == value)
+                        return (mid);
+                if (array[mid] < value)
+                        left = mid + 1;
+                else
+                        right = mid - 1;
+        }
+        return (-1);
 }
